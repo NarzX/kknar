@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>ALL KKNAR FOUNDER | INPO</title>
+  <!-- Font Awesome 6 untuk ikon keren -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background: linear-gradient(160deg, #021b2b 0%, #023047 40%, #03506f 100%);
+      color: #e0f2fe;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      scroll-behavior: smooth;
+    }
+
+    /* Gelombang laut animasi background */
+    .ocean-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: -10px;
+      left: -50%;
+      width: 200%;
+      height: 250px;
+      background: rgba(0, 180, 216, 0.08);
+      border-radius: 40% 45% 35% 42%;
+      animation: drift 18s infinite linear;
+      filter: blur(2px);
+    }
+
+    .wave:nth-child(2) {
+      bottom: -20px;
+      background: rgba(0, 119, 182, 0.12);
+      animation: drift 22s infinite reverse;
+      border-radius: 45% 38% 42% 40%;
+      height: 270px;
+    }
+
+    .wave:nth-child(3) {
+      bottom: -5px;
+      background: rgba(72, 202, 228, 0.07);
+      animation: drift 25s infinite linear;
+      border-radius: 42% 46% 38% 44%;
+      height: 300px;
+    }
+
+    @keyframes drift {
+      0% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(12%) translateY(-12px); }
+      100% { transform: translateX(0) translateY(0); }
+    }
+
+    /* Partikel cahaya (bubbles) */
+    .bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bubble {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      backdrop-filter: blur(1px);
+      animation: rise 15s infinite;
+      bottom: -120px;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(0.3); opacity: 0.2; }
+      50% { opacity: 0.5; }
+      100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+    }
+
+    .content {
+      position: relative;
+      z-index: 10;
+      backdrop-filter: blur(2px);
+      min-height: 100vh;
+      padding: 20px 20px 40px;
+    }
+
+    /* Glass container */
+    .glass-panel {
+      background: rgba(2, 42, 59, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(72, 202, 228, 0.25);
+      border-radius: 48px;
+      padding: 30px 25px;
+      margin: 20px auto;
+      max-width: 1100px;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 163, 204, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .glass-panel:hover {
+      box-shadow: 0 35px 60px rgba(0, 180, 216, 0.35), 0 0 55px rgba(0, 180, 216, 0.5);
+      border-color: rgba(0, 212, 255, 0.5);
+    }
+
+    h1 {
+      font-size: 3.3rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-align: center;
+      background: linear-gradient(180deg, #b7e4ff 0%, #48cae4 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 20px #0077b6);
+      margin-bottom: 10px;
+      animation: glowPulse 2.5s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      0% { filter: drop-shadow(0 0 10px #0096c7); }
+      100% { filter: drop-shadow(0 0 30px #48cae4); }
+    }
+
+    .sub-main {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #ade8f4;
+      margin-bottom: 30px;
+      font-style: italic;
+      letter-spacing: 2px;
+    }
+
+    .dual-column {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .card {
+      flex: 1 1 380px;
+      background: rgba(0, 55, 78, 0.5);
+      backdrop-filter: blur(14px);
+      border-radius: 40px;
+      padding: 25px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      border-color: #48cae4;
+      box-shadow: 0 25px 45px #0077b6;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      left: -20%;
+      width: 140%;
+      height: 180%;
+      background: radial-gradient(circle, rgba(0,212,255,0.2) 0%, transparent 70%);
+      transition: 0.5s;
+      opacity: 0;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .logo-placeholder {
+      font-size: 4.5rem;
+      text-align: center;
+      margin: 15px 0;
+      color: #90e0ef;
+      filter: drop-shadow(0 0 15px #0077b6);
+      transition: 0.3s;
+    }
+
+    .card:hover .logo-placeholder {
+      transform: scale(1.1);
+    }
+
+    .card h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #caf0f8;
+      margin-bottom: 25px;
+      text-shadow: 0 0 20px #023e8a;
+    }
+
+    .btn-detail {
+      background: transparent;
+      border: 2px solid #48cae4;
+      color: #caf0f8;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: block;
+      margin: 20px auto 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      letter-spacing: 1px;
+      backdrop-filter: blur(5px);
+      background: rgba(0,119,182,0.2);
+    }
+
+    .btn-detail:hover {
+      background: #0096c7;
+      color: white;
+      border-color: white;
+      box-shadow: 0 0 30px #48cae4;
+    }
+
+    .detail-box {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.7s ease-in-out, margin 0.3s;
+      background: rgba(0, 30, 45, 0.7);
+      border-radius: 30px;
+      margin-top: 5px;
+      color: #e0f2fe;
+      backdrop-filter: blur(10px);
+    }
+
+    .detail-box.active {
+      max-height: 800px; /* cukup untuk konten */
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #48cae4;
+    }
+
+    .member-list {
+      list-style: none;
+      padding-left: 10px;
+    }
+
+    .member-list li {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+    }
+
+    .member-list i {
+      color: #48cae4;
+      width: 22px;
+      text-align: center;
+    }
+
+    .highlight {
+      color: #ffd966;
+      font-weight: bold;
+    }
+
+    .about-kknar {
+      text-align: center;
+      margin: 40px auto 20px;
+      padding: 15px;
+      background: rgba(0, 180, 216, 0.1);
+      border-radius: 60px;
+      max-width: 700px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #90e0ef;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Background animasi -->
+<div class="ocean-bg">
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
+<div class="bubbles" id="bubblesContainer"></div>
+
+<div class="content">
+  <div class="glass-panel">
+    <h1>ALL KKNAR FOUNDER</h1>
+    <div class="sub-main"><i class="fas fa-water"></i> iwak asli boyolali🤫😹😹 <i class="fas fa-fish"></i></div>
+
+    <!-- All About KKNAR -->
+    <div class="about-kknar">
+      <p style="font-size: 1.2rem; margin-bottom: 6px;"><i class="fas fa-anchor"></i> <strong>ALL ABOUT KKNAR</strong></p>
+      <p>ex own catalyst cabang -2, own Xzero5, own SC kknar v1 free/vip</p>
+    </div>
+
+    <!-- Dua Card Utama -->
+    <div class="dual-column">
+      <!-- MARGA SHIZER -->
+      <div class="card" id="cardShizer">
+        <div class="logo-placeholder"><i class="fas fa-shield-haltered"></i></div>
+        <h2>MARGA SHIZER</h2>
+        <p style="text-align:center; color:#bde0fe;">Marga by KKNAR</p>
+        <button class="btn-detail" id="btnShizer"><i class="fas fa-chevron-down"></i> Buka Detail</button>
+        <div class="detail-box" id="detailShizer">
+          <p><i class="fas fa-calendar-alt"></i> <span class="highlight">Berdiri:</span> 12 Januari 2026</p>
+          <p><i class="fas fa-crown"></i> <span class="highlight">Founder:</span> KKNAR</p>
+          <p><i class="fas fa-user-tie"></i> <span class="highlight">Petinggi Boy:</span> vinky</p>
+          <p><i class="fas fa-user-tie"></i> <span class="highlight">Petinggi Ledis:</span> Cecay</p>
+          <p><i class="fas fa-users-cog"></i> <span class="highlight">Pengurus 1:</span> Dapinx</p>
+          <p><i class="fas fa-users-cog"></i> <span class="highlight">Pengurus 2:</span> Lori WKWK</p>
+          <p style="margin-top:12px;"><strong>Member:</strong></p>
+          <ul class="member-list">
+            <li><i class="fas fa-star"></i> Geo</li>
+            <li><i class="fas fa-star"></i> Manuel</li>
+            <li><i class="fas fa-star"></i> GodiXX</li>
+            <li><i class="fas fa-star"></i> XD BREN</li>
+            <li><i class="fas fa-star"></i> ... + 289 anggota</li>
+          </ul>
+          <p style="font-style:italic; margin-top:10px;">marga pro pler ni ngalahin evos rrq btr buriram </p>
+        </div>
+      </div>
+
+      <!-- xVx CIRCLE -->
+      <div class="card" id="cardXvx">
+        <div class="logo-placeholder"><i class="fas fa-dragon"></i></div>
+        <h2>xVx CIRCLE</h2>
+        <p style="text-align:center; color:#bde0fe;">CC EPEP BY KKNAR</p>
+        <button class="btn-detail" id="btnXvx"><i class="fas fa-chevron-down"></i> Buka Detail</button>
+        <div class="detail-box" id="detailXvx">
+          <p><i class="fas fa-calendar-alt"></i> <span class="highlight">Berdiri:</span> 5 Maret 2025</p>
+          <p><i class="fas fa-crown"></i> <span class="highlight">Founder:</span> Kknar</p>
+          <p><i class="fas fa-user-tie"></i> <span class="highlight">Petinggi Boy:</span> Rey</p>
+          <p><i class="fas fa-user-tie"></i> <span class="highlight">Petinggi Ledis:</span> Nanay</p>
+          <p><i class="fas fa-users-cog"></i> <span class="highlight">Pengurus 1:</span> Abbys</p>
+          <p><i class="fas fa-users-cog"></i> <span class="highlight">Pengurus 2:</span> Nova Garing</p>
+          <p style="margin-top:14px;"><strong>🌟 Player Inti (Core):</strong></p>
+          <ul class="member-list">
+            <li><i class="fas fa-crosshairs"></i> kael wk</li>
+            <li><i class="fas fa-crosshairs"></i> kamil gundul</li>
+            <li><i class="fas fa-crosshairs"></i> Mambui xd</li>
+            <li><i class="fas fa-crosshairs"></i> bsk gadget😔🙏❤️🖤</li>
+          </ul>
+          <p><strong>Member:</strong></p>
+          <ul class="member-list">
+            <li><i class="fas fa-user"></i> Nero</li>
+            <li><i class="fas fa-user"></i> banzky</li>
+            <li><i class="fas fa-user"></i> Finn cees</li>
+            <li><i class="fas fa-user"></i> ... + 78 lainnya</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p><i class="far fa-compass"></i> ALL KKNAR FOUNDER · B slot dm tt gw ae @narkeos! @narxxx_7 <i class="fas fa-water"></i></p>
+      <p style="font-size:0.9rem;">#KKNARElite #MargaShizer #xVxCircle</p>
+    </footer>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // Generate bubbles animasi
+    const bubblesContainer = document.getElementById('bubblesContainer');
+    for (let i = 0; i < 35; i++) {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      const size = Math.random() * 50 + 15;
+      bubble.style.width = size + 'px';
+      bubble.style.height = size + 'px';
+      bubble.style.left = Math.random() * 100 + '%';
+      bubble.style.animationDuration = (Math.random() * 15 + 10) + 's';
+      bubble.style.animationDelay = Math.random() * 8 + 's';
+      bubblesContainer.appendChild(bubble);
+    }
+
+    // Fungsi toggle detail untuk card
+    function setupToggle(buttonId, detailId) {
+      const btn = document.getElementById(buttonId);
+      const detail = document.getElementById(detailId);
+      if (!btn || !detail) return;
+
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        detail.classList.toggle('active');
+        // Ubah ikon chevron
+        const icon = btn.querySelector('i');
+        if (detail.classList.contains('active')) {
+          btn.innerHTML = '<i class="fas fa-chevron-up"></i> Tutup Detail';
+        } else {
+          btn.innerHTML = '<i class="fas fa-chevron-down"></i> Buka Detail';
+        }
+      });
+    }
+
+    setupToggle('btnShizer', 'detailShizer');
+    setupToggle('btnXvx', 'detailXvx');
+
+    // Opsional: klik pada card juga bisa toggle (tapi hindari bentrok dengan tombol)
+    const cardShizer = document.getElementById('cardShizer');
+    const cardXvx = document.getElementById('cardXvx');
+
+    cardShizer.addEventListener('click', function(e) {
+      // jika yang diklik bukan tombol atau detailnya sendiri, toggle
+      if (!e.target.closest('button') && !e.target.closest('.detail-box')) {
+        document.getElementById('detailShizer').classList.toggle('active');
+        const btn = document.getElementById('btnShizer');
+        const detail = document.getElementById('detailShizer');
+        if (detail.classList.contains('active')) {
+          btn.innerHTML = '<i class="fas fa-chevron-up"></i> Tutup Detail';
+        } else {
+          btn.innerHTML = '<i class="fas fa-chevron-down"></i> Buka Detail';
+        }
+      }
+    });
+
+    cardXvx.addEventListener('click', function(e) {
+      if (!e.target.closest('button') && !e.target.closest('.detail-box')) {
+        document.getElementById('detailXvx').classList.toggle('active');
+        const btn = document.getElementById('btnXvx');
+        const detail = document.getElementById('detailXvx');
+        if (detail.classList.contains('active')) {
+          btn.innerHTML = '<i class="fas fa-chevron-up"></i> Tutup Detail';
+        } else {
+          btn.innerHTML = '<i class="fas fa-chevron-down"></i> Buka Detail';
+        }
+      }
+    });
+
+    // Efek tambahan: smooth tampilan logo saat hover (sudah CSS)
+    console.log('🌊 ALL KKNAR FOUNDER · Siap menjelajah lautan elite!');
+  })();
+</script>
+</body>
+</html>
